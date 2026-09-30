@@ -19,7 +19,7 @@ Requer Node.js 22 e npm. Na raiz: `npm ci`, `npm test`, `npm run build`. Para de
 - .github/workflows/: CI e deploy para GitHub Pages.
 
 ## Build e publicação
-`npm run build` gera dist com esbuild e html-minifier-terser. A entrada da build preserva o hash. O workflow executa npm ci, testes e build em PRs para main/develop; atualizações na main permitem publicar dist após sucesso. Settings > Pages deve usar GitHub Actions. A primeira publicação está em preparação.
+`npm run build` gera dist com esbuild e html-minifier-terser. A entrada da build preserva o hash. O workflow executa npm ci, testes e build em PRs para main/develop; atualizações na main permitem publicar dist após sucesso. Settings > Pages usa GitHub Actions. Primeira publicação concluída com sucesso em 30/09/2026; testes e build passaram no CI. Aplicação: https://kaiuzikao.github.io/conecta-solidaria/html/index.html
 
 ## Validação e desempenho
 A SPA passou 18 cenários locais de navegação, formulários, persistência e responsividade. Alto contraste e escolha responsiva de imagens foram testados no Chrome. Textos principais: 12,62:1 no modo claro e 21:1 no alto contraste. Isso não é certificação completa WCAG, nem teste com NVDA/VoiceOver. Dois JPEG960 somam 37.030 bytes; WebP960 somam 11.082 e WebP480 somam 5.294. A build após srcset/sizes reduziu o conjunto JS/CSS/HTML de 58.687 para 44.989 bytes (23,34%), sem gzip/imagens.
@@ -28,4 +28,4 @@ A SPA passou 18 cenários locais de navegação, formulários, persistência e r
 Use somente dados fictícios. O cadastro é salvo neste navegador, sem back-end e sem envio de dados. CPF é validado por formato, sem conferir dígitos verificadores. Não são realizados pagamentos. Contatos da ONG são fictícios. Falhas de armazenamento são tratadas.
 
 ## Versionamento e manutenção
-Mensagens seguem Conventional Commits. O histórico inicia pela importação do projeto consolidado; não pretende reconstruir commits anteriores. Organização GitFlow e release serão configuradas durante a publicação. Edite fontes, execute testes e build e revise o PR antes de integrar mudanças. Não versione node_modules nem dist.
+As principais mensagens usam Conventional Commits; alguns arquivos importados receberam mensagens descritivas geradas pelo editor. O histórico inicia pela importação do projeto consolidado; não pretende reconstruir commits anteriores. A publicação atual utiliza main. Para próximas mudanças, está planejado o fluxo develop e feature, com revisão por PR antes do lançamento. Edite fontes, execute testes e build e revise o PR antes de integrar mudanças. Não versione node_modules nem dist.

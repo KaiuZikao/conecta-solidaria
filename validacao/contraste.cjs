@@ -1,0 +1,5 @@
+const fs=require('node:fs');
+function luminancia(hex){const c=hex.match(/[a-f0-9]{2}/gi).map(v=>parseInt(v,16)/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4);return .2126*c[0]+.7152*c[1]+.0722*c[2];}
+const pares=[['Texto principal','#203548','#FFFFFF'],['Texto sobre a página','#203548','#F4F7F9'],['Botões primários','#FFFFFF','#075783'],['Cabeçalho e rodapé','#FFFFFF','#143B50'],['Mensagens de erro','#B42318','#FEF3F2'],['Mensagens de sucesso','#146C43','#EAF5EE'],['Alto contraste: texto','#FFFFFF','#000000'],['Alto contraste: links e botões','#FFFF00','#000000'],['Alto contraste: erro','#FFB4AB','#000000'],['Alto contraste: sucesso','#00FF00','#000000']];
+const resultados=pares.map(([elemento,texto,fundo])=>{const a=luminancia(texto),b=luminancia(fundo);const razao=(Math.max(a,b)+.05)/(Math.min(a,b)+.05);return {elemento,texto,fundo,razao,AA_texto_normal:razao>=4.5};});
+fs.writeFileSync(__dirname+'/contraste-resultados.json',JSON.stringify({ferramenta:'Script JavaScript próprio; fórmula W3C/WCAG',resultados},null,2));console.table(resultados.map(r=>({...r,razao:r.razao.toFixed(2)})));if(resultados.some(r=>!r.AA_texto_normal))process.exitCode=1;

@@ -1,0 +1,20 @@
+{
+  "name": "conecta-solidaria-ep4",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "start": "node servidor.js",
+    "test": "node --test testes/validacao.test.js",
+    "build:vendor": "esbuild js/vendor/entrada-datas.js --bundle --format=esm --outfile=js/vendor/dayjs.js",
+    "preview": "node scripts/preview.mjs"
+  },
+  "dependencies": {
+    "dayjs": "1.11.23"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "html-minifier-terser": "7.2.0"
+  }
+}
